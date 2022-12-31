@@ -37,16 +37,15 @@ class PostController extends AbstractController
         $post = new Post();
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid())
-        {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($post);
-            $entityManager->flush();
-            $this->addFlash(
-                'success',
-                'Your post was added'
-            );
+            if($form->isSubmitted() && $form->isValid())
+            {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($post);
+                $entityManager->flush();
+                $this->addFlash(
+                    'success',
+                    'Your post was added'
+                );
 
             return $this->redirectToRoute('post');
         }
@@ -67,19 +66,7 @@ class PostController extends AbstractController
         $comment = new Comment();
         $commentForm = $this->createForm(CommentType::class, $comment);
         $commentForm->handleRequest($request);
-        if($commentForm->isSubmitted() && $commentForm->isValid())
-        {
-            $comment->setCreatedAt(new \DateTimeImmutable());
-            $comment->setPost($post);
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($comment);
-            $entityManager->flush(); 
-            $this->addFlash(
-                'success',
-                'Your comment was added'
-            ); 
-            return $this->redirectToRoute('post_show' , ['id' => $post->getId()]);
-        }
+        $this->addComment($commentForm, $comment, $post);
         return $this->render('post/show.html.twig' , [
             'post' => $post,
             'commentForm'=> $commentForm->createView()
@@ -107,6 +94,23 @@ class PostController extends AbstractController
             'post'=>$post,
             'editForm' => $form->createView()
         ]);
+    }
+    //Add comment 
+    private function addComment($commentForm, $comment, $post)
+    {
+        if($commentForm->isSubmitted() && $commentForm->isValid())
+        {
+            $comment->setCreatedAt(new \DateTimeImmutable());
+            $comment->setPost($post);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush(); 
+            $this->addFlash(
+                'success',
+                'Your comment was added'
+            ); 
+            return $this->redirectToRoute('post_show' , ['id' => $post->getId()]);
+        }
     }
 
     
