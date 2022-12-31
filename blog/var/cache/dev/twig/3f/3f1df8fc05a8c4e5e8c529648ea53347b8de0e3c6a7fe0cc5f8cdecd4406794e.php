@@ -88,7 +88,10 @@ class __TwigTemplate_dbd1e665a64afd424a7774b3e4e066fd1993b3c1cfbfac3a077ddb490d0
           <a class=\"nav-link\" href=\"#\">Logout</a>
         </li>
         <li class=\"nav-item\">
-          <a class=\"nav-link\" href=\"#\">Create a post</a>
+          <a class=\"nav-link\" href=\"";
+        // line 40
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("post_new");
+        echo "\">Create a post</a>
         </li>
         
       </ul>
@@ -202,9 +205,14 @@ class __TwigTemplate_dbd1e665a64afd424a7774b3e4e066fd1993b3c1cfbfac3a077ddb490d0
         return "base.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  183 => 52,  170 => 13,  160 => 12,  149 => 9,  139 => 8,  120 => 5,  107 => 53,  105 => 52,  66 => 15,  64 => 12,  61 => 11,  58 => 8,  53 => 5,  47 => 1,);
+        return array (  186 => 52,  173 => 13,  163 => 12,  152 => 9,  142 => 8,  123 => 5,  110 => 53,  108 => 52,  93 => 40,  66 => 15,  64 => 12,  61 => 11,  58 => 8,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -248,7 +256,7 @@ class __TwigTemplate_dbd1e665a64afd424a7774b3e4e066fd1993b3c1cfbfac3a077ddb490d0
           <a class=\"nav-link\" href=\"#\">Logout</a>
         </li>
         <li class=\"nav-item\">
-          <a class=\"nav-link\" href=\"#\">Create a post</a>
+          <a class=\"nav-link\" href=\"{{path('post_new')}}\">Create a post</a>
         </li>
         
       </ul>
@@ -264,6 +272,6 @@ class __TwigTemplate_dbd1e665a64afd424a7774b3e4e066fd1993b3c1cfbfac3a077ddb490d0
         </div>
     </body>
 </html>
-", "base.html.twig", "/Users/magalseck/Downloads/blog/templates/base.html.twig");
+", "base.html.twig", "/Users/magalseck/documents/GitHub/projetPwL3/blog/templates/base.html.twig");
     }
 }

@@ -97,45 +97,63 @@ class __TwigTemplate_c830842e29fac7c39f6b144ea7a293a3c69dd58e0d561d5fa5a311d3351
         border-radius: 10px;
     }
 </style>
-
 ";
-        // line 19
+        // line 18
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["posts"]) || array_key_exists("posts", $context) ? $context["posts"] : (function () { throw new RuntimeError('Variable "posts" does not exist.', 19, $this->source); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["post"]) {
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 18, $this->source); })()), "flashes", [0 => "success"], "method", false, false, false, 18));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 19
+            echo "    <div class=\"alert alert-success text-center\">
+        ";
             // line 20
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+    </div>
+";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 23
+        echo "
+";
+        // line 24
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["posts"]) || array_key_exists("posts", $context) ? $context["posts"] : (function () { throw new RuntimeError('Variable "posts" does not exist.', 24, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["post"]) {
+            // line 25
             echo "    <section class=\"posts\">
     <article>
     <h2>";
-            // line 22
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "intitule", [], "any", false, false, false, 22), "html", null, true);
+            // line 27
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "intitule", [], "any", false, false, false, 27), "html", null, true);
             echo "</h2>
         <div class=\"metadat\">
         ";
-            // line 24
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "localisation", [], "any", false, false, false, 24), "html", null, true);
+            // line 29
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "localisation", [], "any", false, false, false, 29), "html", null, true);
             echo "
         <span class=\"badge bg-success\">";
-            // line 25
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "prix", [], "any", false, false, false, 25), "html", null, true);
+            // line 30
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "prix", [], "any", false, false, false, 30), "html", null, true);
             echo " € </span>
         ";
-            // line 26
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "surface", [], "any", false, false, false, 26), "html", null, true);
+            // line 31
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "surface", [], "any", false, false, false, 31), "html", null, true);
             echo "
         </div>
         <div class=\"content\">
         <img src=";
-            // line 29
+            // line 34
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("images/\"{{post.reference}}\""), "html", null, true);
             echo " alt=\"\">
          <p>";
-            // line 30
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "descriptif", [], "any", false, false, false, 30), "html", null, true);
+            // line 35
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["post"], "descriptif", [], "any", false, false, false, 35), "html", null, true);
             echo "</p>
          <a href=\"";
-            // line 31
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("post_show", ["id" => twig_get_attribute($this->env, $this->source, $context["post"], "id", [], "any", false, false, false, 31)]), "html", null, true);
+            // line 36
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("post_show", ["id" => twig_get_attribute($this->env, $this->source, $context["post"], "id", [], "any", false, false, false, 36)]), "html", null, true);
             echo "\">Read more</a>
         </div>
     </article>
@@ -146,11 +164,11 @@ class __TwigTemplate_c830842e29fac7c39f6b144ea7a293a3c69dd58e0d561d5fa5a311d3351
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['post'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 37
+        // line 42
         echo "<div class=\"navigation\">
     ";
-        // line 38
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["posts"]) || array_key_exists("posts", $context) ? $context["posts"] : (function () { throw new RuntimeError('Variable "posts" does not exist.', 38, $this->source); })()));
+        // line 43
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["posts"]) || array_key_exists("posts", $context) ? $context["posts"] : (function () { throw new RuntimeError('Variable "posts" does not exist.', 43, $this->source); })()));
         echo "
 </div>
 
@@ -175,7 +193,7 @@ class __TwigTemplate_c830842e29fac7c39f6b144ea7a293a3c69dd58e0d561d5fa5a311d3351
 
     public function getDebugInfo()
     {
-        return array (  153 => 38,  150 => 37,  138 => 31,  134 => 30,  130 => 29,  124 => 26,  120 => 25,  116 => 24,  111 => 22,  107 => 20,  103 => 19,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  171 => 43,  168 => 42,  156 => 36,  152 => 35,  148 => 34,  142 => 31,  138 => 30,  134 => 29,  129 => 27,  125 => 25,  121 => 24,  118 => 23,  109 => 20,  106 => 19,  102 => 18,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -197,6 +215,11 @@ class __TwigTemplate_c830842e29fac7c39f6b144ea7a293a3c69dd58e0d561d5fa5a311d3351
         border-radius: 10px;
     }
 </style>
+{% for message in app.flashes('success') %}
+    <div class=\"alert alert-success text-center\">
+        {{ message }}
+    </div>
+{% endfor %}
 
 {% for post in posts%}
     <section class=\"posts\">
@@ -221,6 +244,6 @@ class __TwigTemplate_c830842e29fac7c39f6b144ea7a293a3c69dd58e0d561d5fa5a311d3351
 </div>
 
 {% endblock %}
-", "post/index.html.twig", "/Users/magalseck/downloads/blog/templates/post/index.html.twig");
+", "post/index.html.twig", "/Users/magalseck/documents/GitHub/projetPwL3/blog/templates/post/index.html.twig");
     }
 }

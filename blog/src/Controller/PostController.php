@@ -3,7 +3,9 @@
 namespace App\Controller;
 use App\Repository\PostRepository;
 use App\Entity\Post;
+use App\Entity\Comment;
 use App\Form\PostType;
+use App\Form\CommentType;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,6 +43,10 @@ class PostController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($post);
             $entityManager->flush();
+            $this->addFlash(
+                'success',
+                'Your post was added'
+            );
 
             return $this->redirectToRoute('post');
         }
@@ -57,8 +63,49 @@ class PostController extends AbstractController
     {
         $postId = $request->attributes->get('id');
         $post = $postRepository->find($postId);
+
+        $comment = new Comment();
+        $commentForm = $this->createForm(CommentType::class, $comment);
+        $commentForm->handleRequest($request);
+        if($commentForm->isSubmitted() && $commentForm->isValid())
+        {
+            $comment->setCreatedAt(new \DateTimeImmutable());
+            $comment->setPost($post);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+            $entityManager->flush(); 
+            $this->addFlash(
+                'success',
+                'Your comment was added'
+            ); 
+            return $this->redirectToRoute('post_show' , ['id' => $post->getId()]);
+        }
         return $this->render('post/show.html.twig' , [
-            'post' => $post
+            'post' => $post,
+            'commentForm'=> $commentForm->createView()
+        ]);
+    }
+    /**
+     * @Route("/post/{id}/edit" , name="post_edit")
+     */
+    public function edit(Post $post, Request $request)
+    {
+        $form = $this->createForm(PostType::class, $post);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($post);
+            $entityManager->flush(); 
+            $this->addFlash(
+                'success',
+                'Your post was edited'
+            ); 
+            return $this->redirectToRoute('post_show' , ['id' => $post->getId()]);
+        }
+        return $this->render('/post/edit.html.twig',[
+            'post'=>$post,
+            'editForm' => $form->createView()
         ]);
     }
 
