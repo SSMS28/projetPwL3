@@ -4,9 +4,17 @@
 
 return [
     'post' => [[], ['_controller' => 'App\\Controller\\PostController::index'], [], [['text', '/']], [], [], []],
+    'categorie_terrain' => [[], ['_controller' => 'App\\Controller\\PostController::terrain'], [], [['text', '/categories/terrain']], [], [], []],
+    'categorie_prairie' => [[], ['_controller' => 'App\\Controller\\PostController::prairie'], [], [['text', '/categories/prairie']], [], [], []],
+    'categorie_bois' => [[], ['_controller' => 'App\\Controller\\PostController::bois'], [], [['text', '/categories/bois']], [], [], []],
+    'categorie_batiment' => [[], ['_controller' => 'App\\Controller\\PostController::batiment'], [], [['text', '/categories/batiment']], [], [], []],
+    'categorie_exploitation' => [[], ['_controller' => 'App\\Controller\\PostController::exploitation'], [], [['text', '/categories/exploitation']], [], [], []],
     'post_new' => [[], ['_controller' => 'App\\Controller\\PostController::create'], [], [['text', '/post/new']], [], [], []],
     'post_show' => [['id'], ['_controller' => 'App\\Controller\\PostController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/post']], [], [], []],
     'post_edit' => [['id'], ['_controller' => 'App\\Controller\\PostController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/post']], [], [], []],
+    'security_registration' => [[], ['_controller' => 'App\\Controller\\SecurityController::registration'], [], [['text', '/inscription']], [], [], []],
+    'security_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/connexion']], [], [], []],
+    'security_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/deconnexion']], [], [], []],
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
     '_wdt' => [['token'], ['_controller' => 'web_profiler.controller.profiler::toolbarAction'], [], [['variable', '/', '[^/]++', 'token', true], ['text', '/_wdt']], [], [], []],
     '_profiler_home' => [[], ['_controller' => 'web_profiler.controller.profiler::homeAction'], [], [['text', '/_profiler/']], [], [], []],

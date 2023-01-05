@@ -9,7 +9,15 @@ return [
     false, // $matchHost
     [ // $staticRoutes
         '/' => [[['_route' => 'post', '_controller' => 'App\\Controller\\PostController::index'], null, null, null, false, false, null]],
+        '/categories/terrain' => [[['_route' => 'categorie_terrain', '_controller' => 'App\\Controller\\PostController::terrain'], null, null, null, false, false, null]],
+        '/categories/prairie' => [[['_route' => 'categorie_prairie', '_controller' => 'App\\Controller\\PostController::prairie'], null, null, null, false, false, null]],
+        '/categories/bois' => [[['_route' => 'categorie_bois', '_controller' => 'App\\Controller\\PostController::bois'], null, null, null, false, false, null]],
+        '/categories/batiment' => [[['_route' => 'categorie_batiment', '_controller' => 'App\\Controller\\PostController::batiment'], null, null, null, false, false, null]],
+        '/categories/exploitation' => [[['_route' => 'categorie_exploitation', '_controller' => 'App\\Controller\\PostController::exploitation'], null, null, null, false, false, null]],
         '/post/new' => [[['_route' => 'post_new', '_controller' => 'App\\Controller\\PostController::create'], null, null, null, false, false, null]],
+        '/inscription' => [[['_route' => 'security_registration', '_controller' => 'App\\Controller\\SecurityController::registration'], null, null, null, false, false, null]],
+        '/connexion' => [[['_route' => 'security_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
+        '/deconnexion' => [[['_route' => 'security_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
         '/_profiler' => [[['_route' => '_profiler_home', '_controller' => 'web_profiler.controller.profiler::homeAction'], null, null, null, true, false, null]],
         '/_profiler/search' => [[['_route' => '_profiler_search', '_controller' => 'web_profiler.controller.profiler::searchAction'], null, null, null, false, false, null]],
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
