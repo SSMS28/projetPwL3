@@ -26,7 +26,7 @@
          {{post.localisation}}
         <span class="badge bg-success">{{post.prix}} € </span>
         {{post.surface}}
-        {{post.comments | length}} {{ (post.comments | length <= 1) ? 'commentaire' : 'commentaires'}}
+        
         </div>
         <div class="content">
          <img src="https://picsum.photos/300/200?grayscale" alt="" class="mt-3 mb-3">
@@ -35,19 +35,6 @@
          <a href="{{ path('post_edit' , {'id' : post.id})}}">Edit the post</a>
         </div>
     </article>
-</section>
-<h2 class="mt-5"> {{post.comments | length}} {{ (post.comments | length <= 1) ? 'commentaire' : 'commentaires'}}</h2>
-<section class="mt-5">
-    {% for comment in post.comments %}
-
-    <div class="card-header">
-        {{comment.author}} <small>{{ comment.createdAt | date('Y-m-d')}} at {{ comment.createdAt | date('H:i')}}</small>
-    </div>
-    <div card-body>
-        <p>{{ comment.content }}</p>
-    </div>
-    {% endfor %}
-
 </section>
 
 <hr>

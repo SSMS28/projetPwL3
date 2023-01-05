@@ -21,7 +21,7 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    public function add(Post $entity, bool $flush = false): void
+    public function save(Post $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 

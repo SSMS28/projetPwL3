@@ -3,6 +3,7 @@
 namespace App\Controller;
 use App\Repository\PostRepository;
 use App\Entity\Post;
+use App\Entity\SearchTerrain;
 use App\Entity\Comment;
 use App\Form\PostType;
 use App\Form\CommentType;
@@ -28,6 +29,136 @@ class PostController extends AbstractController
             'posts' => $posts
         ]);
     }
+
+    //controller catégorie terrain agricole
+    /**
+     * @Route("/categories/terrain", name="categorie_terrain")
+     */
+    public function terrain(PostRepository $postRepository, PaginatorInterface $paginator, Request $request): Response
+    {   
+        $posts = $paginator->paginate(
+            $postRepository->findBy(['categorie' => 'Terrain agricole']), /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            5 /*limit per page*/
+        );
+        return $this->render('categories/terrain.html.twig', [
+            'posts' => $posts
+        ]);
+    }
+
+    // controller pour page catégorie prairie
+    /**
+     * @Route("/categories/prairie", name="categorie_prairie")
+     */
+    public function prairie(PostRepository $postRepository, PaginatorInterface $paginator, Request $request): Response
+    {   
+        $posts = $paginator->paginate(
+            $postRepository->findBy(['categorie' => 'Prairie']), /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            5 /*limit per page*/
+        );
+        return $this->render('categories/prairie.html.twig', [
+            'posts' => $posts
+        ]);
+    }
+
+    // controller pour page catégorie bois
+    /**
+     * @Route("/categories/bois", name="categorie_bois")
+     */
+    public function bois(PostRepository $postRepository, PaginatorInterface $paginator, Request $request): Response
+    {   
+        $posts = $paginator->paginate(
+            $postRepository->findBy(['categorie' => 'Bois']), /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            5 /*limit per page*/
+        );
+        return $this->render('categories/bois.html.twig', [
+            'posts' => $posts
+        ]);
+    }
+
+    // controller pour page catégorie batiment
+    /**
+     * @Route("/categories/batiment", name="categorie_batiment")
+     */
+    public function batiment(PostRepository $postRepository, PaginatorInterface $paginator, Request $request): Response
+    {   
+        $posts = $paginator->paginate(
+            $postRepository->findBy(['categorie' => 'Batiments']), /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            5 /*limit per page*/
+        );
+        return $this->render('categories/batiment.html.twig', [
+            'posts' => $posts
+        ]);
+    }
+
+    // controller pour page catégorie exploitation
+    /**
+     * @Route("/categories/exploitation", name="categorie_exploitation")
+     */
+    public function exploitation(PostRepository $postRepository, PaginatorInterface $paginator, Request $request): Response
+    {   
+        $posts = $paginator->paginate(
+            $postRepository->findBy(['categorie' => 'Exploitations']), /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            5 /*limit per page*/
+        );
+        return $this->render('categories/exploitations.html.twig', [
+            'posts' => $posts
+        ]);
+    }
+
+    // /**
+    //  * @Route("/categories/search/partials/terrainData", name="categorie_terrain_data")
+    //  */
+    // public function terrain(PostRepository $postRepository, PaginatorInterface $paginator, Request $request): Response
+    // {   
+    //     $posts = $paginator->paginate(
+    //         $postRepository->findBy(['categorie' => 'Terrain agricole']), /* query NOT result */
+    //         $request->query->getInt('page', 1), /*page number*/
+    //         5 /*limit per page*/
+    //     );
+    //     return $this->render('categories/search/partials/terrainData.html.twig', [
+    //         'posts' => $posts
+    //     ]);
+    // }
+
+    // private $repoSearchTerrain;
+    // public function __construct(PostRepository $repoSearchTerrain){
+    //     $this -> repoSearchTerrain = $repoSearchTerrain;
+    // }
+    // /**
+    //  * @Route("/categories/terrain", name="categorie_terrain")
+    //  */
+    // public function SearchTerrain(PostRepository $postRepository, PaginatorInterface $paginator, Request $request): Response
+    // {   
+    //     // Show only the Terrain agrocole
+    //     $posts = $paginator->paginate(
+    //         $postRepository->findBy(['categorie' => 'Terrain agricole']), /* query NOT result */
+    //         $request->query->getInt('page', 1), /*page number*/
+    //         5 /*limit per page*/
+    //     );
+
+    //     //Form empty
+    //     $search = new SearchTerrain(); // Entity sans enregistrement dans la BD
+    //     $form = $this -> createForm(SearchTerrainType::class, $search);
+
+    //     // Then form is submited
+    //     $form -> handleRequest($request);
+    //     if($form -> isSubmitted() && $form -> isValid()){
+    //         $terrain = $this -> repoSearchTerrain -> findTerrain($search);
+    //     }
+
+    //     return $this->render('categories/terrain.html.twig', [
+    //         'controller_name'=> 'PostController',
+    //         'posts' => $posts,
+    //         'search' => $form -> createView()
+    //     ]);
+    // }
+
+
 
     /**
      * @Route("/post/new",name="post_new")
