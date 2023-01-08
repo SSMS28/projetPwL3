@@ -8,6 +8,7 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
+        '/admin' => [[['_route' => 'admin', '_controller' => 'App\\Controller\\Admin\\DashboardController::index'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'post', '_controller' => 'App\\Controller\\PostController::index'], null, null, null, false, false, null]],
         '/categories/terrain' => [[['_route' => 'categorie_terrain', '_controller' => 'App\\Controller\\PostController::terrain'], null, null, null, false, false, null]],
         '/categories/prairie' => [[['_route' => 'categorie_prairie', '_controller' => 'App\\Controller\\PostController::prairie'], null, null, null, false, false, null]],
